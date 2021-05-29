@@ -9,4 +9,9 @@ class GoalsControllerTest < ActionDispatch::IntegrationTest
     get goals_path
     assert_response :success
   end
+
+  test 'Should get to new' do
+    get new_goal_path 
+    assert_response :success
+  end
 end
