@@ -14,4 +14,15 @@ class GoalsControllerTest < ActionDispatch::IntegrationTest
     get new_goal_path 
     assert_response :success
   end
+
+  test 'Should get to create' do
+    post goals_path,
+    params: {
+      goal: {
+        title: 'Goals Controller TDD',
+        description: 'Goals description Controller TDD'
+      }
+    }
+    assert_response :redirect
+  end
 end
