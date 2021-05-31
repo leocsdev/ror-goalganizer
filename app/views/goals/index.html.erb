@@ -1,0 +1,17 @@
+<div>
+  <div>
+    <h1>All Goals</h1>
+
+    <%= 
+      # Go to new route to create new goal
+      link_to 'Add New Goal', new_goal_path
+    %>
+  </div>
+
+  <div class="blogs">
+    <% @goals.each do |goal| %>
+      <p><%= link_to goal.title, goal %></p>
+      <p><%= link_to goal.description, goal %></p>
+    <% end %>
+  </div>
+</div>

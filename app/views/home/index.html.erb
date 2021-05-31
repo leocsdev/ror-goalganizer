@@ -1,4 +1,4 @@
-<div class="font-sans bg-white h-screen flex flex-col w-full">
+<%# <div class="font-sans bg-white h-screen flex flex-col w-full">
  <div class="h-screen bg-gradient-to-r from-green-400 to-blue-500">
   <div class="px-4 py-48">
    <div class="relative w-full text-center">
@@ -9,4 +9,23 @@
    </div>
   </div>
  </div>
+</div> %>
+
+
+<div>
+  <div>
+    <h1>All Goals</h1>
+
+    <%= 
+      # Go to new route to create new goal
+      link_to 'Add New Goal', new_goal_path
+    %>
+  </div>
+
+  <div class="blogs">
+    <% @goals.each do |goal| %>
+      <p><%= link_to goal.title, goal %></p>
+      <p><%= link_to goal.description, goal %></p>
+    <% end %>
+  </div>
 </div>

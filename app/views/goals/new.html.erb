@@ -1,0 +1,31 @@
+<div class="container py-5">
+  <h1 class="mb-5">Add Main Goal</h1>
+
+  <%= form_with scope: :goal, model: @goal, local: true do |f| %>
+    <% if @goal.errors.any? %>
+      <ul class="bg-danger text-light">
+        <% @goal.errors.full_messages.each do |m| %>
+          <li>
+            <strong><%= m %></strong>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_area :description, class: "form-control", rows: 15 %>
+    </div>
+
+    <div class="add-option">
+      <%= f.submit "Add", class: "btn btn-primary" %>
+      <%= link_to 'Cancel', root_path, class: "btn btn-info" %>
+    </div>
+    
+  <% end %>
+</div>
