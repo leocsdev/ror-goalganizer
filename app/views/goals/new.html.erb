@@ -1,31 +1,33 @@
-<div>
-  <h1>Add Goal</h1>
-
-  <%= form_with scope: :goal, model: @goal, local: true do |f| %>
-    <% if @goal.errors.any? %>
-      <ul>
-        <% @goal.errors.full_messages.each do |m| %>
-          <li>
-            <strong><%= m %></strong>
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
-
-    <div>
-      <%= f.label :title %>
-      <%= f.text_field :title %>
-    </div>
-
-    <div>
-      <%= f.label :description %>
-      <%= f.text_area :description, rows: 10 %>
-    </div>
-
-    <div>
-      <%= f.submit "Add" %>
-      <%= link_to 'Cancel', root_path %>
-    </div>
+<section class="py-4 md:py-8">
+  <div class="container mx-auto px-4 md:px-8">
+    <h1 class="mb-6 text-2xl font-medium text-center">Add Goal</h1>
     
-  <% end %>
+    <div class="w-full mt-16 md:mt-0 md:w-4/5 md:mx-auto lg:w-3/5 xl:w-2/5">
+      <%= form_with scope: :goal, model: @goal, local: true do |f| %>
+        <% if @goal.errors.any? %>
+          <ul>
+            <% @goal.errors.full_messages.each do |m| %>
+              <li>
+                <strong><%= m %></strong>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+
+        
+          <%# = f.label :title %>
+          <%= f.text_field :title, placeholder: "Goal Name", class: "block w-full px-4 py-3 mb-4 border border-5 border-gray-500 rounded-lg focus:ring focus:ring-blue-100 focus:outline-none" %>
+              
+          <%# = f.label :description %>
+          <%= f.text_area :description, placeholder: "Goal Description", rows: 10, class: "block w-full px-4 py-3 mb-4 border border-5 border-gray-500 rounded-lg focus:ring focus:ring-blue-100 focus:outline-none" %>
+        
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-8">
+            <%= f.submit "Add", class: "px-3 py-4 font-medium text-white bg-blue-600 rounded-lg" %>
+            
+            <%= link_to "Cancel", root_path, class: "px-3 py-4 font-medium text-white text-center bg-red-600 rounded-lg" %>
+          </div>
+        
+      <% end %>
+    </div>
+  </div>
 </div>
