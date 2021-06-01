@@ -1,0 +1,30 @@
+<section class="py-4 md:py-8">
+  <div class="container mx-auto px-4 md:px-8">
+    <h1 class="mb-6 text-2xl font-medium text-center">Edit Goal</h1>
+    
+    <div class="w-full mt-16 md:mt-0 md:w-4/5 md:mx-auto lg:w-3/5 xl:w-2/5">
+      <%= form_with scope: :goal, model: @goal, local: true do |f| %>
+        <% if @goal.errors.any? %>
+          <ul>
+            <% @goal.errors.full_messages.each do |m| %>
+              <li>
+                <strong><%= m %></strong>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+
+        <%= f.text_field :title, placeholder: "Goal Name", class: "block w-full px-4 py-3 mb-4 border border-5 border-gray-500 rounded-lg focus:ring focus:ring-blue-100 focus:outline-none" %>
+
+        <%= f.text_area :description, placeholder: "Goal Description", rows: 10, class: "block w-full px-4 py-3 mb-4 border border-5 border-gray-500 rounded-lg focus:ring focus:ring-blue-100 focus:outline-none" %>
+
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-8">
+          <%= f.submit "Update", class: "px-3 py-4 font-medium text-white bg-blue-600 rounded-lg" %>
+          
+          <%= link_to "Cancel", goals_path, class: "px-3 py-4 font-medium text-white text-center bg-red-600 rounded-lg" %>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</section>

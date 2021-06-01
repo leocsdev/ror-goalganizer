@@ -1,0 +1,18 @@
+<section class="py-4 md:py-8">
+  <div class="container mx-auto px-4 md:px-8">
+    <h1 class="mb-5"><%= @goal.title %></h1>
+    <p><%= @goal.description %></p>
+
+    <div>
+      <%= link_to 'Edit', edit_goal_path, class: "btn btn-success" %>
+
+      <%= link_to 'Delete', goal_path(@goal), class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure?" } %>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
