@@ -1,8 +1,9 @@
 <section class="py-4 md:py-8">
   <div class="container mx-auto px-4 md:px-8">
+    
     <h1>All Goals</h1>
 
-    <%= link_to 'Add New Goal', new_goal_path %>
+    <%= link_to 'Add New Goal', new_goal_path, class: "inline-block px-3 py-4 font-medium text-white bg-blue-600 rounded-lg" %>
 
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
       <% @goals.each do |goal| %>
@@ -14,6 +15,7 @@
         <% end %>
       <% end %>
     </div>
+    
   </div>
 </section>
 
