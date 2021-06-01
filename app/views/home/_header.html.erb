@@ -1,4 +1,12 @@
-<h1>Home/Header Partial Here</h1>
+<header class="h-20 bg-gray-200">
+  <nav class="h-full container mx-auto px-4 md:px-8 flex justify-between items-center">
+    <div class="logo mr-8"><%= link_to 'Goalganizer', root_path %></div>
 
-<br>
-<br>
+    <ul class="flex flex-col md:flex-row">
+      <li class="ml-8"><%= link_to 'Home', root_path %></li>
+      <li class="ml-8"><%= link_to 'Dashboard', goals_path %></li>
+      <li class="ml-8"><%= link_to 'Add New Goal', new_goal_path %></li>
+      <li class="ml-8"><%= link_to 'About', about_path %></li>
+    </ul>
+  </nav>
+</header>
