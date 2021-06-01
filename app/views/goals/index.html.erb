@@ -2,12 +2,12 @@
   <div class="container mx-auto px-4 md:px-8">
 
     <div class="flex flex-col sm:flex-row justify-between items-center mb-8">
-      <h1 class="text-4xl font-bold mb-4 sm:mb-0">All Goals</h1>
+      <h1 class="text-5xl font-bold mb-4 sm:mb-0">All Goals</h1>
 
       <%= link_to 'Add New Goal', new_goal_path, class: "w-full sm:w-auto px-3 py-5 font-medium text-white text-center bg-blue-600 rounded-lg" %>
     </div>    
 
-    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
       <% @goals.each do |goal| %>
         <%= link_to goal do %>
           <div class="p-4 border rounded-lg">
