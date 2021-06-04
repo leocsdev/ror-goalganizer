@@ -14,7 +14,7 @@ class TasksController < ApplicationController
     @task = @goal.tasks.build(task_params)
 
     if @task.save
-      redirect_to goal_task_path
+      redirect_to goal_tasks_path
     else
       render :new
     end
