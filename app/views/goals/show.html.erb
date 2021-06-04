@@ -17,7 +17,8 @@
     <div class="mb-8">
       <h2 class="text-3xl text-center mb-8">Started Tasks</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-        <% @goal.tasks.each do |task| %>
+        <%# @goal.tasks.each do |task| %>
+        <% @tasks.each do |task| %>
           <div class="p-4 border rounded-lg">
             <h3 class="text-2xl"><%= task.name %></h3>
             <p><%= task.deadline %></p>
