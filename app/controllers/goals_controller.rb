@@ -23,7 +23,7 @@ class GoalsController < ApplicationController
     @tasksLength = @goal.tasks.count
     @tasksStarted = @goal.tasks.where(status: 'Started').order(deadline: :asc)
 
-    @tasksCompleted = @goal.tasks.where(status: 'Completed').order(deadline: :asc)
+    @tasksCompleted = @goal.tasks.where(status: 'Completed').order(deadline: :desc)
   end
 
   def edit
@@ -34,7 +34,6 @@ class GoalsController < ApplicationController
     @goal = Goal.find(params[:id])
 
     if @goal.update(goal_params)
-      # redirect_to goals_path
       redirect_to goal_path
     else
       render :edit
