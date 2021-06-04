@@ -3,8 +3,6 @@ class TasksController < ApplicationController
   before_action :get_goal
 
   def index
-    # @tasks = @goal.tasks
-
     redirect_to goal_path(params[:goal_id])
   end
 
@@ -16,8 +14,6 @@ class TasksController < ApplicationController
     @task = @goal.tasks.build(task_params)
 
     if @task.save
-      # redirect_to goal_tasks_path
-      
       redirect_to goal_path(params[:goal_id])
     else
       render :new
@@ -33,7 +29,13 @@ class TasksController < ApplicationController
   end
 
   def update
-    
+    @task = @goal.tasks.find(params[:id])
+
+    if @task.update(task_params)
+      redirect_to goal_path(params[:goal_id])
+    else
+      render :edit
+    end
   end
 
   def destroy
