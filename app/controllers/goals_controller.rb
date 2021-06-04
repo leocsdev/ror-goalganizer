@@ -19,7 +19,7 @@ class GoalsController < ApplicationController
 
   def show
     @goal = Goal.find(params[:id])
-    @tasks = @goal.tasks.order(deadline: :desc)
+    @tasks = @goal.tasks.order(deadline: :asc)
   end
 
   def edit
