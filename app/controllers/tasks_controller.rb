@@ -3,7 +3,9 @@ class TasksController < ApplicationController
   before_action :get_goal
 
   def index
-    @tasks = @goal.tasks
+    # @tasks = @goal.tasks
+
+    redirect_to goal_path(params[:goal_id])
   end
 
   def new
@@ -14,7 +16,8 @@ class TasksController < ApplicationController
     @task = @goal.tasks.build(task_params)
 
     if @task.save
-      redirect_to goal_tasks_path
+      # redirect_to goal_tasks_path
+      redirect_to goal_path(params[:goal_id])
     else
       render :new
     end
