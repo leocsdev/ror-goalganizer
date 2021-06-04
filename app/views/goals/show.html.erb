@@ -26,10 +26,16 @@
             <hr>
             <br>
             <p>
-              <%= link_to 'Edit Task', edit_goal_task_path(@goal, task.id) %>
-              
-            
-            | Delete Task</p>
+              <%= link_to 'Edit', edit_goal_task_path(@goal, task.id) %>
+              | 
+              <%= 
+                link_to 'Delete', 
+                goal_task_path(@goal, task.id), 
+                class: "btn btn-danger", method: :delete, 
+                # data: { confirm: "Are you sure?" } 
+                data: {confirm: "Delete " + task.name + ", are you sure?"}
+              %>
+            </p>
           </div>
         <% end %>
       </div>
