@@ -20,18 +20,20 @@
   </p>
 
   <p>
-    <%= f.label :deadline %>
+    <%#= f.label :deadline %>
+    <%= f.label 'Due Date' %>
     <%= f.date_field :deadline %>
   </p>
 
   <p>
     <%= f.label :status %>
-    <%= f.text_field :status %>
+    <%#= f.text_field :status %>
+    <%= f.select :status, ['Started', 'Completed'] %>
   </p>
 
   <p>
-    <%= f.label :goal_id %>
-    <%= f.text_field :goal_id %>
+    <%#= f.label :goal_id %>
+    <%#= f.text_field :goal_id %>
   </p>
 
   <p>

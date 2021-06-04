@@ -26,7 +26,8 @@
 
   <p>
     <%= f.label :status %>
-    <%= f.text_field :status %>
+    <%#= f.text_field :status %>
+    <%= f.select :status, ['Started', 'Completed'] %>
   </p>
 
   <p>
