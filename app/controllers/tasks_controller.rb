@@ -1,24 +1,32 @@
 class TasksController < ApplicationController
+  # Do this first before any other methods below
+  before_action :get_goal
+
   def index
+    @tasks = @goal.tasks
   end
 
-  # def new
-  #   @task = Task.new
-  # end
+  def new
+    @task = @goal.tasks.build
+  end
 
-  # def create
-  #   @task = Task.new(task_params)
+  def create
+    @task = @goal.tasks.build(task_params)
 
-  #   if @task.save
-  #     redirect_to tasks_path
-  #   else
-  #     render :new
-  #   end
-  # end
+    if @task.save
+      redirect_to goal_task_path
+    else
+      render :new
+    end
+  end
 
-  # private
+  private
 
-  # def task_params
-  #   params.require(:task).permit(:name, :description, :deadline, :status)
-  # end
+  def get_goal
+    @goal = Goal.find(params[:goal_id])
+  end
+
+  def task_params
+    params.require(:task).permit(:name, :description, :deadline, :status, :goal_id)
+  end
 end
