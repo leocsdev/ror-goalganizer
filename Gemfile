@@ -58,3 +58,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Fix rexml/document error
 gem 'rexml', '~> 3.2', '>= 3.2.4'
+
+# Devise user management
+gem 'devise', '~> 4.8'
