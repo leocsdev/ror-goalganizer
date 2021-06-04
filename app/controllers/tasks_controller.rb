@@ -17,11 +17,29 @@ class TasksController < ApplicationController
 
     if @task.save
       # redirect_to goal_tasks_path
+      
       redirect_to goal_path(params[:goal_id])
     else
       render :new
     end
   end
+
+  def show
+    redirect_to goal_path(params[:goal_id])
+  end
+
+  def edit
+    @task = @goal.tasks.find(params[:id])
+  end
+
+  def update
+    
+  end
+
+  def destroy
+    
+  end
+
 
   private
 
