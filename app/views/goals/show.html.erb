@@ -21,7 +21,7 @@
         <% @tasks.each do |task| %>
           <div class="p-4 border rounded-lg">
             <h3 class="text-2xl"><%= task.name %></h3>
-            <p><%= task.deadline %></p>
+            <p>Due on <%= task.deadline.strftime('%F') %></p>
             <br>
             <br>
             <hr>
