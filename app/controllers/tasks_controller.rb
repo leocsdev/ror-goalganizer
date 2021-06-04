@@ -3,6 +3,7 @@ class TasksController < ApplicationController
   before_action :get_goal
 
   def index
+    # @tasks = @goal.tasks.order(name: :desc)
     redirect_to goal_path(params[:goal_id])
   end
 
