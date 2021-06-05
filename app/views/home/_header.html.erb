@@ -2,7 +2,7 @@
   <nav class="h-full container mx-auto px-4 md:px-8 flex justify-between items-center">
     <div class="logo mr-8"><%= link_to 'Goalganizer', root_path %></div>
 
-    <ul class="flex flex-col md:flex-row">
+    <ul class="flex flex-col md:flex-row items-center">
       <li class="ml-8">
         <%= link_to 'Home', root_path %>
       </li>
@@ -24,6 +24,11 @@
           <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
         </li>
 
+        <li class="ml-8">
+          <%= current_user.email %>
+        </li>
+        
+
       <% else %>
         <li class="ml-8">
           <%= link_to 'Sign Up', new_user_registration_path %>
@@ -31,9 +36,12 @@
         <li class="ml-8">
           <%= link_to 'Sign In', new_user_session_path %>
         </li>
-
       <% end %>
     </ul>
+
+    <%# if user_signed_in? %>
+      <!--<p class="container mx-auto px-4 md:px-8 my-2 text-right">Logged in as: <%#= current_user.email %> </p> -->
+    <%# end %>
   </nav>
 </header>
 
