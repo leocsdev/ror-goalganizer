@@ -1,3 +1,7 @@
+<h1>Add Task For <%= @goal.title %></h1>
+
+<br>
+
 <%= form_with model: [@goal, @task], local: true do |f| %>
   <% if @goal.errors.any? %>
     <ul>
