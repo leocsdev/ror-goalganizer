@@ -7,4 +7,5 @@ class Goal < ApplicationRecord
   # dependent :destroy -> delete all associated tasks when goal is deleted
   has_many :tasks, dependent: :destroy
   
+  belongs_to :user
 end
