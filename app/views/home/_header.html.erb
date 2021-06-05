@@ -39,10 +39,6 @@
             <%= link_to 'Sign In', new_user_session_path, class: "nav-link" %>
           </li>
         <% end %>
-
-
-
-          
       </ul>
     </div>
   </nav>
@@ -50,7 +46,7 @@
 
 <br>
 
-<div class="container mx-auto px-4 md:px-8">
+<div class="container-fluid">
   <% if notice %>
     <%= render 'home/alerts' %>
   <% end %> 
