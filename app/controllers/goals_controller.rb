@@ -49,6 +49,6 @@ class GoalsController < ApplicationController
 
   private
   def goal_params
-    params.require(:goal).permit(:title, :description)
+    params.require(:goal).permit(:title, :description, :user_id)
   end
 end
