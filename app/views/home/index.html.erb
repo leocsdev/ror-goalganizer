@@ -1,15 +1,40 @@
 <section class="py-4 md:py-8">
   <div class="container mx-auto px-4 md:px-8">
-    <h1 class="text-3xl">HOME</h1>
 
     <% if current_user %>
-      <ul>
-        <% @tasks.each do |task| %>
-          <li><%= task.name %></li>
-        <% end %>
-      </ul>
+      <h1 class="text-3xl">Welcome Back!</h1>
+      
+      <br>
+
+      <%if @tasks.count == 0 %>
+        <p>
+          No tasks are due today, <%= link_to 'View All Goals', goals_path %>
+        </p>
+      <% else %>
+        <p>Here are the task/s that are due today:</p>
+
+        <br>
+
+        <ul>
+          <% @tasks.each do |task| %>
+            <li><%= task.name %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
+      <br>
+
     <% else %>
-      <%= link_to 'View All Goals', goals_path %>
+      <h1 class="text-3xl">HOME</h1>
+      
+      <br>
+
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil alias, quaerat dolorum sit maiores quibusdam earum perferendis soluta deleniti, est illo ea recusandae obcaecati delectus laborum. Sint delectus dicta quia!</p>
+
+      <br>
+
+      <p><%= link_to 'Sign In',  new_user_session_path %></p>
+      
     <% end %>
     
   </div>
