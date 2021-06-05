@@ -1,20 +1,16 @@
-<%# <div class="font-sans bg-white h-screen flex flex-col w-full">
- <div class="h-screen bg-gradient-to-r from-green-400 to-blue-500">
-  <div class="px-4 py-48">
-   <div class="relative w-full text-center">
-    <h1
-     class="animate-pulse font-bold text-gray-200 text-2xl mb-6">
-    Your TailwindCSS setup is working if this pulses...
-    </h1>
-   </div>
-  </div>
- </div>
-</div> %>
-
 <section class="py-4 md:py-8">
   <div class="container mx-auto px-4 md:px-8">
     <h1 class="text-3xl">HOME</h1>
 
-    <%= link_to 'View All Goals', goals_path %>
+    <% if current_user %>
+      <ul>
+        <% @tasks.each do |task| %>
+          <li><%= task.name %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <%= link_to 'View All Goals', goals_path %>
+    <% end %>
+    
   </div>
 </section>
