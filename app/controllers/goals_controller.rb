@@ -1,16 +1,20 @@
 class GoalsController < ApplicationController
   before_action :authenticate_user!
+  # before_action :get_user
 
   def index
-    @goals = Goal.all.order(created_at: :desc)
+    # @goals = Goal.all.order(created_at: :desc)
+    @goals = current_user.goals
   end
 
   def new
-    @goal = Goal.new
+    # @goal = Goal.new
+    @goal = current_user.goals.build
   end
 
   def create
-    @goal = Goal.new(goal_params)
+    # @goal = Goal.new(goal_params)
+    @goal = current_user.goals.build(goal_params)
 
     if @goal.save
       redirect_to goals_path
@@ -50,6 +54,12 @@ class GoalsController < ApplicationController
   end
 
   private
+
+  # def get_user
+    # @user = User.find(params[:user_id])
+    # @user = User.find(params[:id])
+  # end
+
   def goal_params
     params.require(:goal).permit(:title, :description, :user_id)
   end
