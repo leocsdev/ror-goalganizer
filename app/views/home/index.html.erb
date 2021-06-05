@@ -3,7 +3,11 @@
 
     <% if current_user %>
       <h1 class="text-3xl">Welcome Back!</h1>
-      
+
+      <br>
+
+      <p>Today's date is <%= Date.current %></p>
+
       <br>
 
       <%if @tasks.count == 0 %>
