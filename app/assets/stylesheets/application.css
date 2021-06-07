@@ -16,7 +16,7 @@
  */
 
 .home-height {
-  min-height: calc(100vh - 144px);
+  min-height: calc(100vh - 112px);
 }
 
 a {
