@@ -39,7 +39,7 @@
           if @tasksLength == 0 
         %>
           <div class="row">
-            <div class="col-md-10 offset-md-2">
+            <div class="col-md-10 offset-md-1">
               <p class="display-4">NO TASK, ADD TASK</p>
             </div>
           </div>
@@ -49,7 +49,7 @@
             if @tasksStarted.count > 0 
           %>
             <div class="row">
-              <div class="col-md-10 offset-md-2">
+              <div class="col-md-10 offset-md-1">
                 <h2 class="text-center mb-4">
                   Started Tasks
                 </h2>
@@ -59,7 +59,7 @@
             
             <div class="row">
               <% @tasksStarted.each do |task| %>
-                <div class="col-md-10 offset-md-2 mb-4">
+                <div class="col-md-10 offset-md-1 mb-4">
                   <div class="card">
                     <div class="card-body">
                       <h3 class="card-title"><%= task.name %></h3>
@@ -94,7 +94,7 @@
             if @tasksCompleted.count > 0 
           %>
             <div class="row">
-              <div class="col-md-10 offset-md-2">
+              <div class="col-md-10 offset-md-1">
                 <h2 class="text-center mt-5 mb-4">
                   Completed Tasks
                 </h2>
@@ -103,7 +103,7 @@
 
             <div class="row">
               <% @tasksCompleted.each do |task| %>
-                <div class="col-md-10 offset-md-2 mb-4">
+                <div class="col-md-10 offset-md-1 mb-4">
                   <div class="card">
                     <div class="card-body">
                       <h3 class="card-title"><%= task.name %></h3>
