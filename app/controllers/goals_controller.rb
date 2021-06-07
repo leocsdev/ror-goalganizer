@@ -1,6 +1,6 @@
 class GoalsController < ApplicationController
   before_action :authenticate_user!
-  # before_action :get_user
+  before_action :correct_user, only: [:show, :edit, :update, :destroy]
 
   def index
     # @goals = Goal.all.order(created_at: :desc)
@@ -53,12 +53,12 @@ class GoalsController < ApplicationController
     redirect_to goals_path
   end
 
-  private
+  def correct_user
+    @goal = current_user.goals.find_by(id: params[:id])
+    redirect_to goals_path, notice: "That is someone's goal, you are NOT AUTORIZED to edit that goal" if @goal.nil?
+  end
 
-  # def get_user
-    # @user = User.find(params[:user_id])
-    # @user = User.find(params[:id])
-  # end
+  private
 
   def goal_params
     params.require(:goal).permit(:title, :description, :user_id)
