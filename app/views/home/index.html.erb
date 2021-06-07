@@ -3,7 +3,8 @@
 
     <% if current_user %>
       <h1>Welcome!</h1>
-      <p>Today's date is <%= Date.current %></p>
+      <p>Today's date is <%= Date.today %></p>
+      
       <br>
 
       <%if @tasks.count == 0 %>
@@ -12,21 +13,47 @@
         </p>
 
       <% else %>
-      
-        <p>Here are the task/s that are due today:</p>
-        <ul>
-          <% @tasks.each do |task| %>
-            <% @goals.each do |goal| %>
-              <% if goal.id == task.goal_id %>
-                <%= link_to goal_path(goal) do %>
-                  <li><%= task.name %> - <%= goal.title %></li>
+
+        <% if @tasks_overdue.count > 0 %>
+          <p>Here are the task/s that are OVERDUE:</p>
+          <ul>
+            <% @tasks_overdue.each do |task| %>
+              <% @goals.each do |goal| %>
+                <% if goal.id == task.goal_id %>
+                  <%= link_to goal_path(goal) do %>
+                    <li>
+                      <%= task.name %> - <%= goal.title %>, 
+                      Due Date: <%= task.deadline.strftime('%F') %>
+                    </li>
+                  <% end %>
                 <% end %>
               <% end %>
             <% end %>
-          <% end %>
-        </ul>
+          </ul>
+        <% end %>
+
+        <br>
+
+        <% if @tasks_due_today.count > 0 %>
+          <p>Here are the task/s that are due today:</p>
+          <ul>
+            <% @tasks_due_today.each do |task| %>
+              <% @goals.each do |goal| %>
+                <% if goal.id == task.goal_id %>
+                  <%= link_to goal_path(goal) do %>
+                    <li>
+                      <%= task.name %> - <%= goal.title %>
+                    </li>
+                  <% end %>
+                <% end %>
+              <% end %>
+            <% end %>
+          </ul>
+        <% end %>
       <% end %>
+
     <% else %>
+    
       <h1>HOME</h1>
       
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil alias, quaerat dolorum sit maiores quibusdam earum perferendis soluta deleniti, est illo ea recusandae obcaecati delectus laborum. Sint delectus dicta quia!</p>

@@ -1,16 +1,24 @@
 class HomeController < ApplicationController
-  # before_action :authenticate_user!
-
   def index
     # If user is logged in
     if current_user
+      # Get all goals for current user
       @goals = current_user.goals
 
-      # get all tasks due today
+      # Get all tasks both due and overdue
       @tasks = current_user.tasks.where(
-        deadline: Date.current, 
-        status: 'Started'
+        "deadline <= ? AND status = ?", Date.today, 'Started'
       )
+
+      # Get all tasks due today
+      @tasks_due_today = current_user.tasks.where(
+        "deadline = ? AND status = ?", Date.today, 'Started'
+      )
+
+      # Get all tasks overdue
+      @tasks_overdue = current_user.tasks.where(
+        "deadline < ? AND status = ?", Date.today, 'Started'
+      )      
     end
   end
 
