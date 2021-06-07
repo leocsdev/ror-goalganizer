@@ -1,6 +1,8 @@
 class TasksController < ApplicationController
   # Do this first before any other methods below
+  before_action :authenticate_user!
   before_action :get_goal
+  before_action :correct_user, only: [:show, :edit, :update, :destroy]
 
   def index
     # @tasks = @goal.tasks.order(name: :desc)
@@ -44,6 +46,11 @@ class TasksController < ApplicationController
     @task.destroy
 
     redirect_to goal_path(params[:goal_id])
+  end
+
+  def correct_user
+    @task = current_user.tasks.find_by(id: params[:id])
+    redirect_to goals_path, notice: "That is someone's task, you are NOT AUTORIZED to edit that task" if @task.nil?
   end
 
 
