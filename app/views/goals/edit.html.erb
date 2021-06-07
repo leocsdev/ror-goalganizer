@@ -1,31 +1,33 @@
 <section>
-  <div>
+  <div class="container">
     <h1>Edit Goal</h1>
-    
-    <div>
-      <%= form_with scope: :goal, model: @goal, local: true do |f| %>
-        <% if @goal.errors.any? %>
-          <ul>
-            <% @goal.errors.full_messages.each do |m| %>
-              <li>
-                <strong><%= m %></strong>
-              </li>
-            <% end %>
-          </ul>
-        <% end %>
 
-        <%= f.text_field :title, placeholder: "Goal Name" %>
+    <%= form_with scope: :goal, model: @goal, local: true do |f| %>
+      <% if @goal.errors.any? %>
+        <ul class="new-error-ul">
+          <% @goal.errors.full_messages.each do |m| %>
+            <li class="alert alert-warning alert-dismissible fade show" role="alert">
 
-        <%= f.text_area :description, placeholder: "Goal Description", rows: 10 %>
+              <strong><%= m %></strong>
 
-        <div>
-          <%= f.submit "Update" %>
-          
-          <%#= link_to "Cancel", goals_path %>
-          <%= link_to "Cancel", goal_path %>
-        </div>
-
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </li>
+          <% end %>
+        </ul>
       <% end %>
-    </div>
+
+      <%= f.text_field :title, placeholder: "Goal Title" %>
+
+      <%= f.text_area :description, placeholder: "Goal Description", rows: 10 %>
+
+      <div>
+        <%= f.submit "Update" %>
+        
+        <%= link_to "Cancel", goal_path %>
+      </div>
+
+    <% end %>
   </div>
 </section>
