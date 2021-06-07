@@ -1,3 +1,11 @@
 // Place all the styles related to the goals controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.tasks-list {
+  @media screen and (min-width: 768px) {
+    height: calc(100vh - 212px);
+    overflow: hidden;
+    overflow-y: auto;
+  }
+}

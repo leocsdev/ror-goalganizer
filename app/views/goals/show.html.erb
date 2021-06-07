@@ -1,101 +1,139 @@
 <section>
-  
-  
-  <div>
-    <h1><%= @goal.title %></h1>
-  
-    <div>
-      <%= link_to 'Edit Goal Details', edit_goal_path %>
-      |
-      <%= link_to 'Delete Goal', goal_path(@goal), method: :delete, data: { confirm: "Are you sure?" } %>
-    </div>
-  </div>
-
-  <%= link_to 'Add New Task', new_goal_task_path(@goal) %>
-  
-
-
-  
-  <div>
-  
-  
-  
-    <%
-      # If no tasks created, show no task and ask to add task 
-      if @tasksLength == 0 
-    %>
-      NO TASK, ADD TASK
-    <% else %>
-
-      <%= @tasksCompleted.count %> of <span id="tasksLength"><%= @tasksLength %></span> Tasks Completed
-
-      <% 
-        # Display started tasks, hide if there is none
-        if @tasksStarted.count > 0 
-      %>
-        <div>
-          <h2>
-            Started Tasks
-          </h2>
-
-          <div>
-            <% @tasksStarted.each do |task| %>
-              <div>
-                <h3><%= task.name %></h3>
-                <p>Due on <%= task.deadline.strftime('%F') %></p>
-                
-                <p>Status: <%= task.status %></p>
-                
-                <p>
-                  <%= link_to 'Edit', edit_goal_task_path(@goal, task.id) %>
-                  | 
-                  <%= 
-                    link_to 'Delete', 
-                    goal_task_path(@goal, task.id), method: :delete, 
-                    # data: { confirm: "Are you sure?" } 
-                    data: {confirm: "Delete " + task.name + ", are you sure?"}
-                  %>
-                </p>
-              </div>
+  <div class="container">
+    <div class="row row-cols-1 row-cols-md-2">
+      <div class="col-md-4 text-center">
+        <div class="goal-heading">
+          <h1 class="text-center mb-4"><%= @goal.title %></h1>
+      
+          <div class="mb-4 text-center">
+            <%= link_to edit_goal_path do %>
+              <i class="fas fa-edit"></i>
+            <% end %>
+            |
+            <%= 
+              link_to goal_path(@goal), 
+              method: :delete, 
+              data: { 
+                confirm: "Are you sure you want to delete " + @goal.title + "?" 
+              } do
+            %>
+              <i class="fas fa-trash-alt"></i>
             <% end %>
           </div>
-        </div>
-      <% end %>
+        </div><!-- goal-heading -->
 
-      <%
-        # Display completed tasks, hide if there is none 
-        if @tasksCompleted.count > 0 
-      %>
-        <div>
-          <h2>
-            Completed Tasks
-          </h2>
-          
-          <div>
+        <p class="lead my-3 my-md-5">
+          <%= @tasksCompleted.count %> of <%= @tasksLength %> Tasks Completed
+        </p>
+
+        <%= 
+          link_to 'Add New Task', 
+          new_goal_task_path(@goal), 
+          class: "btn btn-secondary mb-5 mb-md-0" 
+        %>
+      </div><!-- col-md-4 -->
+
+      <div class="col-md-8 tasks-list">
+        <%
+          # If no tasks created, show no task and ask to add task 
+          if @tasksLength == 0 
+        %>
+          <div class="row">
+            <div class="col-md-10 offset-md-2">
+              <p class="display-4">NO TASK, ADD TASK</p>
+            </div>
+          </div>
+        <% else %>
+          <% 
+            # Display started tasks, hide if there is none
+            if @tasksStarted.count > 0 
+          %>
+            <div class="row">
+              <div class="col-md-10 offset-md-2">
+                <h2 class="text-center mb-4">
+                  Started Tasks
+                </h2>
+              </div>
+            </div>
+
             
-            <% @tasksCompleted.each do |task| %>
-              <div>
-                <h3><%= task.name %></h3>
-                <p>Due on <%= task.deadline.strftime('%F') %></p>
-                
-                <p>Status: <%= task.status %></p>
-                
-                <p>
-                  <%= link_to 'Edit', edit_goal_task_path(@goal, task.id) %>
-                  | 
-                  <%= 
-                    link_to 'Delete', 
-                    goal_task_path(@goal, task.id), method: :delete, 
-                    # data: { confirm: "Are you sure?" } 
-                    data: {confirm: "Delete " + task.name + ", are you sure?"}
-                  %>
-                </p>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
+            <div class="row">
+              <% @tasksStarted.each do |task| %>
+                <div class="col-md-10 offset-md-2 mb-4">
+                  <div class="card">
+                    <div class="card-body">
+                      <h3 class="card-title"><%= task.name %></h3>
+                      <p class="card-text">Due on <%= task.deadline.strftime('%F') %></p>
+                      
+                      <p class="card-text">Status: <%= task.status %></p>
+                      
+                      <p class="card-text text-right">
+                        <%= link_to edit_goal_task_path(@goal, task.id) do %>
+                          <i class="fas fa-edit"></i>
+                        <% end %>
+                        | 
+                        <%= 
+                          link_to goal_task_path(@goal, task.id), 
+                          method: :delete, 
+                          data: { 
+                            confirm: "Are you sure you want to delete " + task.name + "?"
+                          } do
+                        %>
+                          <i class="fas fa-trash-alt"></i>
+                        <% end %>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
 
+          <%
+            # Display completed tasks, hide if there is none 
+            if @tasksCompleted.count > 0 
+          %>
+            <div class="row">
+              <div class="col-md-10 offset-md-2">
+                <h2 class="text-center mt-5 mb-4">
+                  Completed Tasks
+                </h2>
+              </div>
+            </div>
+
+            <div class="row">
+              <% @tasksCompleted.each do |task| %>
+                <div class="col-md-10 offset-md-2 mb-4">
+                  <div class="card">
+                    <div class="card-body">
+                      <h3 class="card-title"><%= task.name %></h3>
+                      <p class="card-text">Due on <%= task.deadline.strftime('%F') %></p>
+                      
+                      <p class="card-text">Status: <%= task.status %></p>
+                      
+                      <p class="card-text text-right">
+                        <%= link_to edit_goal_task_path(@goal, task.id) do %>
+                          <i class="fas fa-edit"></i>
+                        <% end %>
+                        | 
+                        <%= 
+                          link_to goal_task_path(@goal, task.id), 
+                          method: :delete, 
+                          data: { 
+                            confirm: "Are you sure you want to delete " + task.name + "?"
+                          } do
+                        %>
+                          <i class="fas fa-trash-alt"></i>
+                        <% end %>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      </div><!-- col-md-8 -->
+    </div><!-- row -->
+  </div><!-- container -->
 </section>

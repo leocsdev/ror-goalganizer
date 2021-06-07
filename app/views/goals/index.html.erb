@@ -1,7 +1,7 @@
 <section>
   <div class="container">
     <div>
-      <h1>All Goals</h1>
+      <h1>Your Goals</h1>
       <%= link_to 'Add New Goal', new_goal_path, class: "btn btn-secondary mb-4" %>
     </div>    
 
@@ -11,14 +11,14 @@
           <div class="col h-100">
             <div class="card h-100">
               <div class="card-body d-flex flex-column">
-                <h3 class="card-title"><%= goal.title %></h3>
+                <h3 class="card-title text-center"><%= goal.title %></h3>
               
                 <!--<p>
                   Created on <%#= goal.created_at.strftime('%F') %>
                 </p>-->
                 
                 <% if goal.description %>
-                  <p class="card-text"><%= goal.description %></p>
+                  <p class="card-text text-center"><%= goal.description %></p>
                 <% end %>
 
                 <%
@@ -29,7 +29,7 @@
                 %> 
 
                 <!-- show status -->
-                <div class="my-4">
+                <div class="my-4 mt-auto text-center">
                   <% if allGoals == 0 %>
                     <h5 class="card-text">No tasks created yet</h5>
                   <% elsif allGoals != 0 && allGoals == goalsCompleted %>
@@ -39,7 +39,7 @@
                   <% end %>
                 </div>
 
-                <p class="card-text align-self-end mt-auto">
+                <p class="card-text align-self-end">
                   <small class="text-muted">
                     Created <%= time_ago_in_words(goal.created_at) %> ago
                   </small>
