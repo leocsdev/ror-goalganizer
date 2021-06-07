@@ -1,4 +1,5 @@
-<div class="close-notice-display">
+
+<div class="close-notice-display container mt-4">
   <div class="alert alert-warning alert-dismissible fade show" role="alert">
     
     <%= notice %>
@@ -11,9 +12,8 @@
 
 <script>
   const closeNoticeDisplay = document.querySelector(".close-notice-display")
-  
+
   setTimeout(function () {
     closeNoticeDisplay.style.display = "none";
   }, 3000);
-
 </script>

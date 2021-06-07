@@ -43,7 +43,9 @@
               <p class="display-4">NO TASK, ADD TASK</p>
             </div>
           </div>
+
         <% else %>
+
           <% 
             # Display started tasks, hide if there is none
             if @tasksStarted.count > 0 
@@ -65,7 +67,7 @@
                       <h3 class="card-title"><%= task.name %></h3>
                       <p class="card-text">Due on <%= task.deadline.strftime('%F') %></p>
                       
-                      <p class="card-text">Status: <%= task.status %></p>
+                      <!--<p class="card-text">Status: <%#= task.status %></p>-->
                       
                       <p class="card-text text-right">
                         <%= link_to edit_goal_task_path(@goal, task.id) do %>
@@ -109,7 +111,7 @@
                       <h3 class="card-title"><%= task.name %></h3>
                       <p class="card-text">Due on <%= task.deadline.strftime('%F') %></p>
                       
-                      <p class="card-text">Status: <%= task.status %></p>
+                      <!--<p class="card-text">Status: <%#= task.status %></p>-->
                       
                       <p class="card-text text-right">
                         <%= link_to edit_goal_task_path(@goal, task.id) do %>
