@@ -1,21 +1,25 @@
-<section class="py-4 md:py-8">
-  <div class="container mx-auto px-4 md:px-8">
-    <div class="flex justify-between items-center mb-8">
-      <div>
-        <h1 class="text-5xl font-bold"><%= @goal.title %></h1>
-      
-        <div>
-          <%= link_to 'Edit Goal Details', edit_goal_path, class: "btn btn-success" %>
-          |
-          <%= link_to 'Delete Goal', goal_path(@goal), class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure?" } %>
-        </div>
-      </div>
-
-      <%= link_to 'Add New Task', new_goal_task_path(@goal), class: "w-full sm:w-auto px-3 py-5 font-medium text-white text-center bg-blue-600 rounded-lg" %>
+<section>
+  
+  
+  <div>
+    <h1><%= @goal.title %></h1>
+  
+    <div>
+      <%= link_to 'Edit Goal Details', edit_goal_path %>
+      |
+      <%= link_to 'Delete Goal', goal_path(@goal), method: :delete, data: { confirm: "Are you sure?" } %>
     </div>
+  </div>
+
+  <%= link_to 'Add New Task', new_goal_task_path(@goal) %>
+  
 
 
-    
+  
+  <div>
+  
+  
+  
     <%
       # If no tasks created, show no task and ask to add task 
       if @tasksLength == 0 
@@ -29,28 +33,25 @@
         # Display started tasks, hide if there is none
         if @tasksStarted.count > 0 
       %>
-        <div class="started-tasks mb-8">
-          <h2 class="text-3xl text-center mb-8">
+        <div>
+          <h2>
             Started Tasks
           </h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+
+          <div>
             <% @tasksStarted.each do |task| %>
-              <div class="p-4 border rounded-lg">
-                <h3 class="text-2xl"><%= task.name %></h3>
+              <div>
+                <h3><%= task.name %></h3>
                 <p>Due on <%= task.deadline.strftime('%F') %></p>
-                <br>
+                
                 <p>Status: <%= task.status %></p>
-                <br>
-                <br>
-                <hr>
-                <br>
+                
                 <p>
                   <%= link_to 'Edit', edit_goal_task_path(@goal, task.id) %>
                   | 
                   <%= 
                     link_to 'Delete', 
-                    goal_task_path(@goal, task.id), 
-                    class: "btn btn-danger", method: :delete, 
+                    goal_task_path(@goal, task.id), method: :delete, 
                     # data: { confirm: "Are you sure?" } 
                     data: {confirm: "Delete " + task.name + ", are you sure?"}
                   %>
@@ -65,30 +66,26 @@
         # Display completed tasks, hide if there is none 
         if @tasksCompleted.count > 0 
       %>
-        <div class="completed-tasks">
-          <h2 class="text-3xl text-center mb-8">
+        <div>
+          <h2>
             Completed Tasks
           </h2>
           
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          <div>
             
             <% @tasksCompleted.each do |task| %>
-              <div class="p-4 border rounded-lg">
-                <h3 class="text-2xl"><%= task.name %></h3>
+              <div>
+                <h3><%= task.name %></h3>
                 <p>Due on <%= task.deadline.strftime('%F') %></p>
-                <br>
+                
                 <p>Status: <%= task.status %></p>
-                <br>
-                <br>
-                <hr>
-                <br>
+                
                 <p>
                   <%= link_to 'Edit', edit_goal_task_path(@goal, task.id) %>
                   | 
                   <%= 
                     link_to 'Delete', 
-                    goal_task_path(@goal, task.id), 
-                    class: "btn btn-danger", method: :delete, 
+                    goal_task_path(@goal, task.id), method: :delete, 
                     # data: { confirm: "Are you sure?" } 
                     data: {confirm: "Delete " + task.name + ", are you sure?"}
                   %>
@@ -100,4 +97,5 @@
       <% end %>
     <% end %>
   </div>
+
 </section>
