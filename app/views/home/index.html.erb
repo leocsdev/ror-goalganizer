@@ -1,45 +1,37 @@
-<section>
+<section class="">
   <div class="container">
 
     <% if current_user %>
       <h1>Welcome!</h1>
-
-      <br>
-
       <p>Today's date is <%= Date.current %></p>
-
       <br>
 
       <%if @tasks.count == 0 %>
         <p>
           No tasks are due today, <%= link_to 'View All Goals', goals_path %>
         </p>
+
       <% else %>
+      
         <p>Here are the task/s that are due today:</p>
-
-        <br>
-
         <ul>
           <% @tasks.each do |task| %>
-            <li><%= task.name %></li>
+            <% @goals.each do |goal| %>
+              <% if goal.id == task.goal_id %>
+                <%= link_to goal_path(goal) do %>
+                  <li><%= task.name %> - <%= goal.title %></li>
+                <% end %>
+              <% end %>
+            <% end %>
           <% end %>
         </ul>
       <% end %>
-
-      <br>
-
     <% else %>
       <h1>HOME</h1>
       
-      <br>
-
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil alias, quaerat dolorum sit maiores quibusdam earum perferendis soluta deleniti, est illo ea recusandae obcaecati delectus laborum. Sint delectus dicta quia!</p>
 
-      <br>
-
       <p><%= link_to 'Sign In',  new_user_session_path %></p>
-      
     <% end %>
-    
   </div>
 </section>
