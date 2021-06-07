@@ -4,6 +4,8 @@ class HomeController < ApplicationController
   def index
     # If user is logged in
     if current_user
+      @goals = current_user.goals
+
       # get all tasks due today
       @tasks = current_user.tasks.where(
         deadline: Date.current, 
