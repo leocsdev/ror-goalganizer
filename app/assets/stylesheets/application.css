@@ -15,9 +15,9 @@
   *= require_self
  */
 
-/* body {
-  background-color: #f9f7f7;
-} */
+body {
+  color: #333;
+}
 
 .home-height {
   min-height: calc(100vh - 112px);
@@ -44,10 +44,9 @@ section {
   list-style-type: none;
 }
 
+/* Primary Button - Customized */
 .btn-primary {
   background-color: #3f72af;
-  /* background-color: #112d4e; */
-
   transition: 0.2s ease-in-out;
 }
 

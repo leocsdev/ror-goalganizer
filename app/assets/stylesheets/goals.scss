@@ -2,6 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+// Index Page
+.goal-link-box {
+  transition: 0.2s ease-in-out;
+
+  .card {
+    background-color: #dbe2ef;
+
+    transition: 0.2s ease-in-out;
+  }
+
+  :hover {
+    .card {
+      transform: translateY(-10px);
+      background-color: #3f72af;
+      color: #f9f7f7;
+
+      .card-text {
+        .text-muted {
+          color: #f9f7f7 !important;
+        }
+      }
+    }
+  }
+}
+
 .tasks-list {
   @media screen and (min-width: 768px) {
     height: calc(100vh - 212px);
