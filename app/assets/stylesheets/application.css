@@ -15,6 +15,10 @@
   *= require_self
  */
 
+/* body {
+  background-color: #f9f7f7;
+} */
+
 .home-height {
   min-height: calc(100vh - 112px);
 }
@@ -38,4 +42,30 @@ section {
   margin: 0;
   padding: 0;
   list-style-type: none;
+}
+
+.btn-primary {
+  background-color: #3f72af;
+  /* background-color: #112d4e; */
+
+  transition: 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+  background-color: #112d4e;
+}
+
+footer {
+  background-color: #dbe2ef;
+  color: #112d4e;
+  height: 56px;
+}
+
+footer .container {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

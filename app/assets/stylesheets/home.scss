@@ -1,3 +1,23 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.navbar-light .navbar-brand {
+  color: #f9f7f7;
+
+  &:hover {
+    color: #dbe2ef;
+  }
+}
+
+.bg-light {
+  background-color: #3f72af !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #f9f7f7;
+
+  &:hover {
+    color: #dbe2ef;
+  }
+}
