@@ -2,7 +2,8 @@ class Task < ApplicationRecord
   validates :name, :deadline, :status,
     presence: true
 
-  validate :date_cannot_be_in_the_past
+  # validate :date_cannot_be_in_the_past
+  validate :date_cannot_be_in_the_past, on: :create
   
   def date_cannot_be_in_the_past
     if deadline.present? && deadline < Date.today
