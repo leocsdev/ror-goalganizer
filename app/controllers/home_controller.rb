@@ -18,7 +18,7 @@ class HomeController < ApplicationController
       # Get all tasks overdue
       @tasks_overdue = current_user.tasks.where(
         "deadline < ? AND status = ?", Date.today, 'Started'
-      )      
+      ).order(deadline: :asc)
     end
   end
 

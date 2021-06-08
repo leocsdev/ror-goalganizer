@@ -3,8 +3,9 @@
 
     <% if current_user %>
       <h1>Welcome!</h1>
-      <p>Today's date is <%= Date.today %></p>
+      <!--<p>Today's date is <%#= Date.today %></p>-->
       
+      <br>
       <br>
 
       <%if @tasks.count == 0 %>
@@ -15,16 +16,24 @@
       <% else %>
 
         <% if @tasks_overdue.count > 0 %>
-          <p>Here are the task/s that are OVERDUE:</p>
+          <%# <p>Here are the task/s that are OVERDUE:</p> %>
+          <h3 class="mb-3">You have OVERDUE TASKS:</h3>
           <ul>
             <% @tasks_overdue.each do |task| %>
               <% @goals.each do |goal| %>
                 <% if goal.id == task.goal_id %>
                   <%= link_to goal_path(goal) do %>
-                    <li>
+
+                    <li class="alert alert-danger" role="alert">
                       <%= task.name %> - <%= goal.title %>, 
                       Due Date: <%= task.deadline.strftime('%F') %>
                     </li>
+
+
+                    <!--<div class="alert alert-danger" role="alert">
+                      A simple danger alert—check it out!
+                    </div>-->
+
                   <% end %>
                 <% end %>
               <% end %>
@@ -33,17 +42,27 @@
         <% end %>
 
         <br>
+        <br>
 
         <% if @tasks_due_today.count > 0 %>
-          <p>Here are the task/s that are due today:</p>
+          <%# <p>Here are the task/s that are due today:</p> %>
+          <h3 class="mb-3">Tasks due TODAY:</h3>
           <ul>
             <% @tasks_due_today.each do |task| %>
               <% @goals.each do |goal| %>
                 <% if goal.id == task.goal_id %>
                   <%= link_to goal_path(goal) do %>
-                    <li>
+
+
+                    <li class="alert alert-warning" role="alert">
                       <%= task.name %> - <%= goal.title %>
                     </li>
+
+
+                    <!--<div class="alert alert-warning" role="alert">
+                      A simple warning alert—check it out!
+                    </div>-->
+
                   <% end %>
                 <% end %>
               <% end %>
