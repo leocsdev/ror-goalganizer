@@ -48,10 +48,15 @@ section {
 .btn-primary {
   background-color: #3f72af;
   transition: 0.2s ease-in-out;
+  min-width: 100px;
 }
 
 .btn-primary:hover {
   background-color: #112d4e;
+}
+
+.btn-secondary {
+  min-width: 100px;
 }
 
 footer {
