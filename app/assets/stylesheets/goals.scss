@@ -16,6 +16,7 @@
     .card {
       transform: translateY(-10px);
       background-color: #3f72af;
+      // background-color: #112d4e;
       color: #f9f7f7;
 
       .card-text {
@@ -27,13 +28,43 @@
   }
 }
 
-// New Page
-
 // Show Page
 .tasks-list {
+  .card {
+    transition: 0.4s ease-in-out;
+  }
+
+  .card.card-started {
+    background-color: #dbe2ef;
+    // transition: 0.4s ease-in-out;
+  }
+
+  .card-completed {
+    background-color: #3f72af;
+    color: #f9f7f7;
+  }
+
   @media screen and (min-width: 768px) {
     height: calc(100vh - 212px);
     overflow: hidden;
     overflow-y: auto;
   }
+}
+
+.icon-wrapper {
+  font-size: 24px;
+}
+
+.icon-blue {
+  color: #3f72af;
+}
+
+.icon-red {
+  color: #c82333;
+}
+
+.lead {
+  // font-weight: bold;
+  font-size: 24px;
+  color: #112d4e;
 }

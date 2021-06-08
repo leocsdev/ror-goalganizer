@@ -16,7 +16,30 @@
  */
 
 body {
-  color: #333;
+  /* color: #333; */
+  color: #112d4e;
+  background-color: #f9f7f7;
+}
+
+/* Navbar */
+.bg-dark {
+  background-color: #3f72af !important;
+}
+
+.navbar-dark .navbar-brand {
+  color: #f9f7f7;
+}
+
+.navbar-dark .navbar-brand:hover {
+  color: #dbe2ef;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: #f9f7f7;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: #dbe2ef;
 }
 
 .home-height {
@@ -47,12 +70,16 @@ section {
 /* Primary Button - Customized */
 .btn-primary {
   background-color: #3f72af;
+  /* background-color: #112d4e; */
   transition: 0.2s ease-in-out;
   min-width: 100px;
 }
 
 .btn-primary:hover {
   background-color: #112d4e;
+  /* background-color: #3f72af; */
+  /* background-color: #dbe2ef; */
+  /* color: #112d4e; */
 }
 
 .btn-secondary {
@@ -60,7 +87,11 @@ section {
 }
 
 footer {
-  background-color: #dbe2ef;
+  background-color: #fff;
+  /* background-color: #dbe2ef; */
+  /* background-color: #f9f7f7; */
+  /* color: #112d4e; */
+  /* color: #dbe2ef; */
   color: #112d4e;
   height: 56px;
 }

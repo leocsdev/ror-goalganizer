@@ -3,13 +3,15 @@
     <div class="row row-cols-1 row-cols-md-2">
       <div class="col-md-4 text-center">
         <div class="goal-heading">
-          <h1 class="text-center mb-4"><%= @goal.title %></h1>
+          <h1 class="text-center mb-2"><%= @goal.title %></h1>
       
           <div class="mb-4 text-center">
             <%= link_to edit_goal_path do %>
-              <i class="fas fa-edit"></i>
+              <span class="icon-wrapper icon-blue">
+                <i class="fas fa-edit"></i>
+              </span>
             <% end %>
-            |
+
             <%= 
               link_to goal_path(@goal), 
               method: :delete, 
@@ -17,7 +19,9 @@
                 confirm: "Are you sure you want to delete " + @goal.title + "?" 
               } do
             %>
-              <i class="fas fa-trash-alt"></i>
+              <span class="icon-wrapper icon-red">
+                <i class="fas fa-trash-alt"></i>
+              </span>
             <% end %>
           </div>
         </div><!-- goal-heading -->
@@ -29,7 +33,7 @@
         <%= 
           link_to 'Add New Task', 
           new_goal_task_path(@goal), 
-          class: "btn btn-secondary mb-5 mb-md-0" 
+          class: "btn btn-primary btn-lg mb-5 mb-md-0" 
         %>
       </div><!-- col-md-4 -->
 
@@ -62,28 +66,38 @@
             <div class="row">
               <% @tasksStarted.each do |task| %>
                 <div class="col-md-10 offset-md-1 mb-4">
-                  <div class="card">
+                  <div class="card card-started">
                     <div class="card-body">
-                      <h3 class="card-title"><%= task.name %></h3>
-                      <p class="card-text">Due on <%= task.deadline.strftime('%F') %></p>
+                      <h4 class="card-title mb-2"><%= task.name %></h4>
+
+                      <p class="card-text mb-2"><%= task.description %></p>
+
+                      <div class="d-flex justify-content-between mt-4">
+                        <p class="card-text text-muted mb-0">
+                          Due on <%= task.deadline.strftime('%F') %>
+                        </p>
+
+                        <div class="">
+                          <%= link_to edit_goal_task_path(@goal, task.id) do %>
+                            <span class="icon-blue">
+                              <i class="fas fa-edit"></i>
+                            </span>
+                          <% end %>
+                          | 
+                          <%= 
+                            link_to goal_task_path(@goal, task.id), 
+                            method: :delete, 
+                            data: { 
+                              confirm: "Are you sure you want to delete " + task.name + "?"
+                            } do
+                          %>
+                            <span class="icon-red">
+                              <i class="fas fa-trash-alt"></i>
+                            </span>
+                          <% end %>
+                        </div>
                       
-                      <!--<p class="card-text">Status: <%#= task.status %></p>-->
-                      
-                      <p class="card-text text-right">
-                        <%= link_to edit_goal_task_path(@goal, task.id) do %>
-                          <i class="fas fa-edit"></i>
-                        <% end %>
-                        | 
-                        <%= 
-                          link_to goal_task_path(@goal, task.id), 
-                          method: :delete, 
-                          data: { 
-                            confirm: "Are you sure you want to delete " + task.name + "?"
-                          } do
-                        %>
-                          <i class="fas fa-trash-alt"></i>
-                        <% end %>
-                      </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -106,12 +120,12 @@
             <div class="row">
               <% @tasksCompleted.each do |task| %>
                 <div class="col-md-10 offset-md-1 mb-4">
-                  <div class="card">
+                  <div class="card card-completed">
                     <div class="card-body">
-                      <h3 class="card-title"><%= task.name %></h3>
-                      <p class="card-text">Due on <%= task.deadline.strftime('%F') %></p>
+                      <h4 class="card-title"><%= task.name %></h4>
+                      <p class="card-text mb-2">Due on <%= task.deadline.strftime('%F') %></p>
                       
-                      <!--<p class="card-text">Status: <%#= task.status %></p>-->
+                      <!--<p class="card-text mb-2">Status: <%#= task.status %></p>-->
                       
                       <p class="card-text text-right">
                         <%= link_to edit_goal_task_path(@goal, task.id) do %>
