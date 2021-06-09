@@ -44,7 +44,12 @@
         %>
           <div class="row">
             <div class="col-md-10 offset-md-1">
-              <p class="display-4 text-center">No tasks created, <% link_to 'Add Task', class: "text-primary" %></p>
+              <p class="display-4 text-center">
+                No tasks created yet, <br>
+                <span class="text-primary">
+                  <%= link_to 'Add Task', new_goal_task_path(@goal) %>
+                </span>
+              </p>
             </div>
           </div>
 
