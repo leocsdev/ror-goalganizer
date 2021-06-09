@@ -1,0 +1,83 @@
+<section class="">
+  <div class="container">
+
+    <% if current_user %>
+      <h1>Welcome!</h1>
+      <!--<p>Today's date is <%#= Date.today %></p>-->
+      
+      <br>
+      <br>
+
+      <%if @tasks.count == 0 %>
+        <h3>
+          No tasks are due today, <%= link_to 'View All Goals', goals_path %>
+        </h3>
+
+      <% else %>
+
+        <% if @tasks_overdue.count > 0 %>
+          <%# <p>Here are the task/s that are OVERDUE:</p> %>
+          <h3 class="mb-3">You have OVERDUE TASKS:</h3>
+          <ul>
+            <% @tasks_overdue.each do |task| %>
+              <% @goals.each do |goal| %>
+                <% if goal.id == task.goal_id %>
+                  <%= link_to goal_path(goal) do %>
+
+                    <li class="alert alert-danger" role="alert">
+                      <%= task.name %> - <%= goal.title %>, 
+                      Due Date: <%= task.deadline.strftime('%F') %>
+                    </li>
+
+
+                    <!--<div class="alert alert-danger" role="alert">
+                      A simple danger alert—check it out!
+                    </div>-->
+
+                  <% end %>
+                <% end %>
+              <% end %>
+            <% end %>
+          </ul>
+        <% end %>
+
+        <br>
+        <br>
+
+        <% if @tasks_due_today.count > 0 %>
+          <%# <p>Here are the task/s that are due today:</p> %>
+          <h3 class="mb-3">Tasks due TODAY:</h3>
+          <ul>
+            <% @tasks_due_today.each do |task| %>
+              <% @goals.each do |goal| %>
+                <% if goal.id == task.goal_id %>
+                  <%= link_to goal_path(goal) do %>
+
+
+                    <li class="alert alert-warning" role="alert">
+                      <%= task.name %> - <%= goal.title %>
+                    </li>
+
+
+                    <!--<div class="alert alert-warning" role="alert">
+                      A simple warning alert—check it out!
+                    </div>-->
+
+                  <% end %>
+                <% end %>
+              <% end %>
+            <% end %>
+          </ul>
+        <% end %>
+      <% end %>
+
+    <% else %>
+    
+      <h1>HOME</h1>
+      
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil alias, quaerat dolorum sit maiores quibusdam earum perferendis soluta deleniti, est illo ea recusandae obcaecati delectus laborum. Sint delectus dicta quia!</p>
+
+      <p><%= link_to 'Sign In',  new_user_session_path %></p>
+    <% end %>
+  </div>
+</section>
