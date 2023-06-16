@@ -26,10 +26,9 @@ class GoalsController < ApplicationController
   def show
     @goal = Goal.find(params[:id])
 
-    @tasksLength = @goal.tasks.count
-    @tasksStarted = @goal.tasks.where(status: 'Started').order(deadline: :asc)
-
-    @tasksCompleted = @goal.tasks.where(status: 'Completed').order(deadline: :desc)
+    @tasks_length = @goal.tasks.count
+    @tasks_started = @goal.tasks.where(status: 'Started').order(deadline: :asc)
+    @tasks_completed = @goal.tasks.where(status: 'Completed').order(deadline: :desc)
   end
 
   def edit

@@ -27,7 +27,7 @@
         </div><!-- goal-heading -->
 
         <p class="lead my-3 my-md-5">
-          <%= @tasksCompleted.count %> of <%= @tasksLength %> Tasks Completed
+          <%= @tasks_completed.count %> of <%= @tasks_length %> Tasks Completed
         </p>
 
         <%= 
@@ -40,7 +40,7 @@
       <div class="col-md-8 tasks-list">
         <%
           # If no tasks created, show no task and ask to add task 
-          if @tasksLength == 0 
+          if @tasks_length == 0 
         %>
           <div class="row">
             <div class="col-md-10 offset-md-1">
@@ -57,7 +57,7 @@
 
           <% 
             # Display started tasks, hide if there is none
-            if @tasksStarted.count > 0 
+            if @tasks_started.count > 0 
           %>
             <div class="row">
               <div class="col-md-10 offset-md-1">
@@ -69,7 +69,7 @@
 
             
             <div class="row">
-              <% @tasksStarted.each do |task| %>
+              <% @tasks_started.each do |task| %>
                 <div class="col-md-10 offset-md-1 mb-4">
                   <div class="card card-started">
                     <div class="card-body">
@@ -112,7 +112,7 @@
 
           <%
             # Display completed tasks, hide if there is none 
-            if @tasksCompleted.count > 0 
+            if @tasks_completed.count > 0 
           %>
             <div class="row">
               <div class="col-md-10 offset-md-1">
@@ -123,7 +123,7 @@
             </div>
 
             <div class="row">
-              <% @tasksCompleted.each do |task| %>
+              <% @tasks_completed.each do |task| %>
                 <div class="col-md-10 offset-md-1 mb-4">
                   <div class="card card-completed">
                     <div class="card-body">
